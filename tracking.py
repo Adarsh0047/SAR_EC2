@@ -1,4 +1,5 @@
-from mmdet.apis import init_detector, inference_detector
+# from mmdet.apis import init_detector, inference_detector
+from mmdet.apis import DetInferencer
 import supervision as sv
 import numpy as np
 
@@ -8,10 +9,10 @@ model_name = 'tood_r50_fpn_1x_coco.py'
 checkpoint = 'best_coco_bbox_mAP_epoch_5.pth'
 
 # Set the device to be used for evaluation
-device = 'cuda:0'
-
+device = 'cpu'
+model = DetInferencer(model_name, checkpoint, device=device)
 # Initialize the DetInferencer
-model = init_detector(model_name, checkpoint, device=device)
+# model = init_detector()
 
 # Use the detector to do inference
 # image_path = 
