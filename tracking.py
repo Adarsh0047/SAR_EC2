@@ -1,4 +1,4 @@
-# from mmdet.apis import init_detector, inference_detector
+from mmdet.apis import inference_detector
 from mmdet.apis import DetInferencer
 import supervision as sv
 import numpy as np
