@@ -4,7 +4,7 @@ import supervision as sv
 import numpy as np
 
 # Choose to use a config
-model_name = 'tood_r50_fpn_1x_coco.py'
+model_name = 'tood_r50_fpn_1x_coco'
 # Setup a checkpoint file to load
 checkpoint = 'best_coco_bbox_mAP_epoch_5.pth'
 
