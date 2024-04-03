@@ -1,22 +1,15 @@
-from mmdet.apis import inference_detector
-from mmdet.apis import DetInferencer
+from mmdet.apis import inference_detector,init_detector
 import supervision as sv
 import numpy as np
 
 # Choose to use a config
-model_name = 'tood_r50_fpn_1x_coco'
+model_name = 'configs/tood/tood_r50_fpn_1x_coco.py'  # the abs path 
 # Setup a checkpoint file to load
-checkpoint = 'best_coco_bbox_mAP_epoch_5.pth'
+checkpoint = 'best_coco_bbox_mAP_epoch_5.pth' 
 
 # Set the device to be used for evaluation
 device = 'cpu'
-model = DetInferencer(model_name, checkpoint, device=device)
-# Initialize the DetInferencer
-# model = init_detector()
-
-# Use the detector to do inference
-# image_path = 
-# result = inference_detector(model, image_path)
+model = init_detector(model_name, checkpoint, device=device)
 
 SOURCE_VIDEO_PATH = "ICEYE Ship.mp4" #Path for the Input tracking video
 sv.VideoInfo.from_video_path(SOURCE_VIDEO_PATH)
@@ -24,8 +17,7 @@ TARGET_VIDEO_PATH = "ship_result.mp4"# Path to save the predicted (Tracking) Out
 
 
 # create BYTETracker instance
-# byte_tracker = sv.ByteTrack(track_thresh=0.1, track_buffer=10, match_thresh=0.1, frame_rate=10)
-byte_tracker = sv.ByteTrack()
+byte_tracker = sv.ByteTrack(track_thresh=0.1, track_buffer=10, match_thresh=0.1, frame_rate=10)
 
 # create VideoInfo instance
 video_info = sv.VideoInfo.from_video_path(SOURCE_VIDEO_PATH)
@@ -68,5 +60,4 @@ def callback(frame: np.ndarray, index:int) -> np.ndarray:
 sv.process_video(
     source_path = SOURCE_VIDEO_PATH,
     target_path = TARGET_VIDEO_PATH,
-    callback=callback
-)
+    callback=callback)
