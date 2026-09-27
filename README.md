@@ -1,7 +1,11 @@
-# SAR EC2
+# SAR Ship Detection and Tracking
 
-A synthetic aperture radar (SAR) project with an EC2 deployment workflow.
+A computer-vision experiment for detecting and tracking ships in synthetic aperture radar (SAR) video.
 
-## About
+## Contents
 
-This repository contains the SAR project code and supporting files for running or deploying it on Amazon EC2. Refer to the scripts and configuration for the current workflow.
+- A TOOD ResNet-50/FPN configuration with one detection class.
+- A video tracking script using MMDetection and ByteTrack.
+- An ICEYE ship video sample.
+
+The tracking script expects a trained checkpoint and the MMDetection configuration to be available in the runtime environment. See `tracking.py` before running it.
